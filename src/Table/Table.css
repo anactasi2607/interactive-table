@@ -1,0 +1,29 @@
+.table {
+  width: 100%;
+
+  border-collapse: collapse;
+
+  border: 1px solid grey;
+}
+
+.table-th {
+  padding: 20px;
+
+  text-align: left;
+}
+
+.table-td {
+  padding: 10px 20px;
+}
+
+.table-tbody .table-tr:nth-child(odd) {
+  background-color: #f7f5f5;
+}
+
+.table-tbody .table-tr {
+  cursor: pointer;
+}
+
+.table-tbody .table-tr:hover {
+  background-color: #ffe0e4;
+}
