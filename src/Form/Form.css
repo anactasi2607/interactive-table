@@ -1,0 +1,29 @@
+.add-form {
+  width: 35%;
+  margin-bottom: 20px;
+  padding: 20px;
+
+  border: 1px solid grey;
+  border-radius: 5px;
+}
+
+.add-form-title {
+  margin: 0;
+}
+
+.add-form-input {
+  min-width: 300px;
+  padding: 5px;
+}
+
+.add-form-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.add-form-button {
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+}
