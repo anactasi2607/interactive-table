@@ -18,7 +18,7 @@
 }
 
 .table-tbody .table-tr:nth-child(odd) {
-  background-color: #f7f5f5;
+  background-color: rgba(220, 232, 231, 0.4);
 }
 
 .table-tbody .table-tr {
@@ -26,5 +26,8 @@
 }
 
 .table-tbody .table-tr:hover {
-  background-color: #ffe0e4;
+  z-index: 2;
+
+  background-color: rgba(255, 212, 212, 0.5);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
