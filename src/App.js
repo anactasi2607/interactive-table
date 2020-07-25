@@ -3,6 +3,7 @@ import "./App.css";
 import Loader from "./Loader/Loader.js";
 import Table from "./Table/Table.js";
 import Form from "./Form/Form.js";
+import DetailInfo from "./DetailInfo/DetailInfo.js";
 
 class App extends Component {
   state = {
@@ -15,6 +16,7 @@ class App extends Component {
       email: "",
       phone: "",
     },
+    selectedRow: null,
   };
 
   async componentDidMount() {
@@ -55,6 +57,19 @@ class App extends Component {
     });
   };
 
+  onClickRow = (row) => {
+    this.setState({
+      selectedRow: row,
+    });
+  };
+
+  onClickClose = () => {
+    console.log("закрываю попап");
+    this.setState({
+      selectedRow: null,
+    });
+  };
+
   render() {
     return (
       <div className="container">
@@ -67,7 +82,13 @@ class App extends Component {
               onChangeInput={this.onChangeInput}
               newUser={this.state.newUser}
             />
-            <Table data={this.state.data} />
+            <Table data={this.state.data} onClickRow={this.onClickRow} />
+            {this.state.selectedRow ? (
+              <DetailInfo
+                user={this.state.selectedRow}
+                onClickClose={this.onClickClose}
+              />
+            ) : null}
           </React.Fragment>
         )}
       </div>

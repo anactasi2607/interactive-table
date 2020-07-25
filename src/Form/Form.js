@@ -19,6 +19,7 @@ class Form extends Component {
             placeholder="id"
             onChange={onChangeInput}
             value={newUser.id}
+            required
           ></input>
         </div>
 
@@ -32,6 +33,7 @@ class Form extends Component {
             placeholder="firstName"
             onChange={onChangeInput}
             value={newUser.firstName}
+            required
           ></input>
         </div>
 
@@ -45,6 +47,7 @@ class Form extends Component {
             placeholder="lastName"
             onChange={onChangeInput}
             value={newUser.lastName}
+            required
           ></input>
         </div>
 
@@ -58,6 +61,7 @@ class Form extends Component {
             placeholder="email"
             onChange={onChangeInput}
             value={newUser.email}
+            required
           ></input>
         </div>
 
@@ -71,6 +75,7 @@ class Form extends Component {
             placeholder="phone"
             onChange={onChangeInput}
             value={newUser.phone}
+            required
           ></input>
         </div>
         <button className="add-form-button">Добавить в таблицу</button>

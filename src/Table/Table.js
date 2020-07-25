@@ -15,7 +15,11 @@ function Table(props) {
       </thead>
       <tbody className="table-tbody">
         {props.data.map((item) => (
-          <tr className="table-tr" key={item.id + item.phone}>
+          <tr
+            className="table-tr"
+            key={item.id + item.phone}
+            onClick={props.onClickRow.bind(null, item)}
+          >
             <td className="table-td">{item.id}</td>
             <td className="table-td">{item.firstName}</td>
             <td className="table-td">{item.lastName}</td>

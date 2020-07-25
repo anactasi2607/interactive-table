@@ -1,0 +1,40 @@
+.info {
+  position: relative;
+
+  width: 50%;
+  margin-bottom: 20px;
+  padding: 20px;
+
+  border: 1px solid grey;
+  border-radius: 5px;
+}
+
+.info__row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.info__p {
+  margin: 0;
+
+  font-weight: bold;
+}
+
+.info__text {
+  min-width: 60%;
+  min-height: 140px;
+}
+
+.info__button {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+
+.info__title {
+  margin: 0;
+  margin-bottom: 10px;
+
+  text-align: center;
+}
