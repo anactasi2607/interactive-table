@@ -5,10 +5,11 @@ import Table from "./Table/Table.js";
 import Form from "./Form/Form.js";
 import DetailInfo from "./DetailInfo/DetailInfo.js";
 import _ from "lodash";
+import DataSelector from "./DataSelector/DataSelector.js";
 
 class App extends Component {
   state = {
-    isLoading: true,
+    isLoading: false,
     data: [],
     sort: "asc",
     sortField: "",
@@ -64,12 +65,11 @@ class App extends Component {
       phone: "",
     },
     selectedRow: null,
+    isDataSelected: false,
   };
 
-  async componentDidMount() {
-    const response = await fetch(
-      ` http://www.filltext.com/?rows=32&id={number|1000}&firstName={firstName}&lastName={lastName}&email={email}&phone={phone|(xxx)xxx-xx-xx}&address={addressObject}&description={lorem|32}`
-    );
+  async fetchData(url) {
+    const response = await fetch(url);
 
     const data = await response.json();
     this.setState({
@@ -126,7 +126,23 @@ class App extends Component {
     });
   };
 
+  dataSelectHandler = (url) => {
+    this.setState({
+      isDataSelected: true,
+      isLoading: true,
+    });
+    this.fetchData(url);
+  };
+
   render() {
+    if (!this.state.isDataSelected) {
+      return (
+        <div className="container">
+          <DataSelector onSelect={this.dataSelectHandler} />
+        </div>
+      );
+    }
+
     return (
       <div className="container">
         {this.state.isLoading ? (

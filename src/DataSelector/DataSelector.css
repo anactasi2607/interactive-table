@@ -1,0 +1,28 @@
+.dataSelector {
+  display: flex;
+  justify-content: space-around;
+  width: 70%;
+  margin: auto;
+}
+
+.dataSelector__button {
+  width: 40%;
+  padding: 15px;
+
+  font-weight: bold;
+
+  border: none;
+  border-radius: 5px;
+}
+
+.dataSelector__button:hover {
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.dataSelector__button--small {
+  background-color: rgb(183, 224, 237);
+}
+
+.dataSelector__button--big {
+  background-color: rgb(171, 230, 154);
+}
