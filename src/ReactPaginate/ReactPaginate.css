@@ -1,22 +1,18 @@
 .pagination {
   display: flex;
+  padding: 0;
 
   list-style: none;
 }
 
 .pagination__item {
-  min-width: 20px;
-  height: 20px;
   margin: 2px;
-  padding: 2px;
 
   font-weight: bold;
   text-align: center;
 
   border: 1px solid grey;
   border-radius: 5px;
-
-  user-select: none;
 }
 
 .pagination__item:not(.pagination__item--disabled) {
@@ -39,5 +35,19 @@
 }
 
 .pagination__link {
+  display: block;
+  min-width: 20px;
+  height: 20px;
+  padding: 2px;
+
   outline: none;
+
+  user-select: none;
+}
+
+.pagination__link--break {
+  outline: none;
+  cursor: pointer;
+
+  user-select: none;
 }

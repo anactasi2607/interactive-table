@@ -68,6 +68,7 @@ class App extends Component {
     },
     selectedRow: null,
     isDataSelected: false,
+    currentPage: 0,
   };
 
   async fetchData(url) {
@@ -136,8 +137,15 @@ class App extends Component {
     this.fetchData(url);
   };
 
+  pageChangeHandler = ({ selected }) => {
+    this.setState({ currentPage: selected });
+  };
+
   render() {
-    const pageSize = 20;
+    const pageSize = 50;
+    const displayData = _.chunk(this.state.data, pageSize)[
+      this.state.currentPage
+    ];
     if (!this.state.isDataSelected) {
       return (
         <div className="container">
@@ -159,7 +167,7 @@ class App extends Component {
             />
 
             <Table
-              data={this.state.data}
+              data={displayData}
               onClickRow={this.onClickRow}
               onSort={this.onSort}
               sort={this.state.sort}
@@ -171,7 +179,8 @@ class App extends Component {
                 previousLabel={"<"}
                 nextLabel={">"}
                 breakLabel={"..."}
-                breakClassName={"break-me"}
+                breakClassName={"pagination__item--break"}
+                breakLinkClassName={"pagination__link--break"}
                 pageCount={20}
                 marginPagesDisplayed={2}
                 pageRangeDisplayed={5}
@@ -185,6 +194,7 @@ class App extends Component {
                 nextClassName="pagination__item"
                 previousLinkClassName="pagination__link"
                 nextLinkClassName="pagination__link"
+                forcePage={this.state.currentPage}
               />
             ) : null}
 
