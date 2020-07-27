@@ -6,6 +6,8 @@ import Form from "./Form/Form.js";
 import DetailInfo from "./DetailInfo/DetailInfo.js";
 import _ from "lodash";
 import DataSelector from "./DataSelector/DataSelector.js";
+import ReactPaginate from "react-paginate";
+import "./ReactPaginate/ReactPaginate.css";
 
 class App extends Component {
   state = {
@@ -135,6 +137,7 @@ class App extends Component {
   };
 
   render() {
+    const pageSize = 20;
     if (!this.state.isDataSelected) {
       return (
         <div className="container">
@@ -154,6 +157,7 @@ class App extends Component {
               onChangeInput={this.onChangeInput}
               newUser={this.state.newUser}
             />
+
             <Table
               data={this.state.data}
               onClickRow={this.onClickRow}
@@ -161,6 +165,29 @@ class App extends Component {
               sort={this.state.sort}
               sortField={this.state.sortField}
             />
+
+            {this.state.data.length > pageSize ? (
+              <ReactPaginate
+                previousLabel={"<"}
+                nextLabel={">"}
+                breakLabel={"..."}
+                breakClassName={"break-me"}
+                pageCount={20}
+                marginPagesDisplayed={2}
+                pageRangeDisplayed={5}
+                onPageChange={this.pageChangeHandler}
+                containerClassName={"pagination"}
+                activeClassName={"pagination__item--active"}
+                disabledClassName={"pagination__item--disabled"}
+                pageClassName="pagination__item"
+                pageLinkClassName="pagination__link"
+                previousClassName="pagination__item"
+                nextClassName="pagination__item"
+                previousLinkClassName="pagination__link"
+                nextLinkClassName="pagination__link"
+              />
+            ) : null}
+
             {this.state.selectedRow ? (
               <DetailInfo
                 user={this.state.selectedRow}
