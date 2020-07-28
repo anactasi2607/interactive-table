@@ -4,3 +4,7 @@
   margin: auto;
   padding: 20px;
 }
+
+.header {
+  display: flex;
+}

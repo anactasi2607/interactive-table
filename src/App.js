@@ -8,6 +8,7 @@ import _ from "lodash";
 import DataSelector from "./DataSelector/DataSelector.js";
 import ReactPaginate from "react-paginate";
 import "./ReactPaginate/ReactPaginate.css";
+import TableSearch from "./TableSearch/TableSearch";
 
 class App extends Component {
   state = {
@@ -15,50 +16,6 @@ class App extends Component {
     data: [],
     sort: "asc",
     sortField: "",
-    mokDate: [
-      {
-        id: 101,
-        firstName: "Sue",
-        lastName: "Corson",
-        email: "DWhalley@in.gov",
-        phone: "(612)211-6296",
-        address: {
-          streetAddress: "9792 Mattis Ct",
-          city: "Waukesha",
-          state: "WI",
-          zip: "22178",
-        },
-        description: "et lacus magna dolor...",
-      },
-      {
-        id: 102,
-        firstName: "Иван",
-        lastName: "Петров",
-        email: "Ahnalley@in.gov",
-        phone: "(912)211-6200",
-        address: {
-          streetAddress: "улица Советская",
-          city: "порплоsha",
-          state: "WI",
-          zip: "22178",
-        },
-        description: "et lacus magna dolor...",
-      },
-      {
-        id: 103,
-        firstName: "Марья",
-        lastName: "Сидорова",
-        email: "Msdfhalley@in.gov",
-        phone: "(512)211-5533",
-        address: {
-          streetAddress: "улица Кирова",
-          city: "Северодвинск",
-          state: "WI",
-          zip: "22178",
-        },
-        description: "et lacus magna dolor...",
-      },
-    ],
     newUser: {
       id: "",
       firstName: "",
@@ -69,6 +26,9 @@ class App extends Component {
     selectedRow: null,
     isDataSelected: false,
     currentPage: 0,
+    displayForm: false,
+    isFormValid: true,
+    search: "",
   };
 
   async fetchData(url) {
@@ -141,11 +101,35 @@ class App extends Component {
     this.setState({ currentPage: selected });
   };
 
+  onClick = () => {
+    this.setState({ displayForm: !this.state.displayForm });
+  };
+
+  searchHandler = (search) => {
+    this.setState({ search, currentPage: 0 });
+  };
+
+  getFilteredData() {
+    const { data, search } = this.state;
+
+    if (!search) {
+      return data;
+    }
+
+    return data.filter((item) => {
+      return (
+        item["firstName"].toLowerCase().includes(search.toLowerCase()) ||
+        item["lastName"].toLowerCase().includes(search.toLowerCase()) ||
+        item["email"].toLowerCase().includes(search.toLowerCase())
+      );
+    });
+  }
+
   render() {
     const pageSize = 50;
-    const displayData = _.chunk(this.state.data, pageSize)[
-      this.state.currentPage
-    ];
+    const filteredData = this.getFilteredData(this.state.data);
+    const pageCount = Math.ceil(filteredData.length / pageSize);
+    const displayData = _.chunk(filteredData, pageSize)[this.state.currentPage];
     if (!this.state.isDataSelected) {
       return (
         <div className="container">
@@ -160,11 +144,19 @@ class App extends Component {
           <Loader />
         ) : (
           <React.Fragment>
-            <Form
-              submitHandler={this.submitHandler}
-              onChangeInput={this.onChangeInput}
-              newUser={this.state.newUser}
-            />
+            <div className="header">
+              <TableSearch onSearch={this.searchHandler} />
+              <button onClick={this.onClick}>Добавить</button>
+            </div>
+
+            {this.state.displayForm ? (
+              <Form
+                submitHandler={this.submitHandler}
+                onChangeInput={this.onChangeInput}
+                newUser={this.state.newUser}
+                disabled={this.state.isFormValid}
+              />
+            ) : null}
 
             <Table
               data={displayData}
@@ -181,7 +173,7 @@ class App extends Component {
                 breakLabel={"..."}
                 breakClassName={"pagination__item--break"}
                 breakLinkClassName={"pagination__link--break"}
-                pageCount={20}
+                pageCount={pageCount}
                 marginPagesDisplayed={2}
                 pageRangeDisplayed={5}
                 onPageChange={this.pageChangeHandler}
