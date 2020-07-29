@@ -3,9 +3,16 @@ import "./Form.css";
 
 class Form extends Component {
   render() {
-    const { submitHandler, onChangeInput, newUser, disabled } = this.props;
+    const { submitHandler, onChangeInput, newUser, onClickClose } = this.props;
     return (
       <form className="header__add-form add-form" onSubmit={submitHandler}>
+        <button
+          className="header__button-close"
+          onClick={onClickClose}
+          title="Закрыть"
+        >
+          X
+        </button>
         <h2 className="add-form__title">
           Добавить нового пользователя в таблицу:
         </h2>
@@ -88,9 +95,7 @@ class Form extends Component {
             required
           ></input>
         </div>
-        <button className="add-form__button" disabled={disabled}>
-          Добавить в таблицу
-        </button>
+        <button className="add-form__button">Добавить в таблицу</button>
       </form>
     );
   }

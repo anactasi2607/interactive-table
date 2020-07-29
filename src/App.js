@@ -27,7 +27,6 @@ class App extends Component {
     isDataSelected: false,
     currentPage: 0,
     displayForm: false,
-    isFormValid: true,
     search: "",
   };
 
@@ -40,18 +39,6 @@ class App extends Component {
       data,
     });
   }
-
-  // validateForm = () => {
-  //   let isFormValid = true;
-
-  //   Object.keys(this.state.newUser).forEach((name) => {
-  //     isFormValid = !!this.state.newUser[name] && isFormValid;
-  //     console.log(!!this.state.newUser[name]);
-  //   });
-  //   this.setState({
-  //     isFormValid: isFormValid,
-  //   });
-  // };
 
   onChangeInput = (evt) => {
     this.setState({
@@ -170,7 +157,7 @@ class App extends Component {
                   submitHandler={this.submitHandler}
                   onChangeInput={this.onChangeInput}
                   newUser={this.state.newUser}
-                  disabled={!this.state.isFormValid}
+                  onClickClose={this.onClick}
                 />
               ) : null}
             </header>

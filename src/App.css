@@ -1,3 +1,8 @@
+#root {
+  min-width: 765px;
+  max-width: 1350px;
+}
+
 .container {
   box-sizing: border-box;
   width: 100%;
@@ -20,7 +25,7 @@
 }
 
 .header__addButton {
-  width: 100px;
+  width: 13%;
 
   background-color: rgb(183, 224, 237);
   border: 1px solid grey;

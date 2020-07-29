@@ -1,5 +1,7 @@
 .add-form {
-  width: 80%;
+  position: relative;
+
+  width: 81.5%;
   margin-top: 20px;
   padding: 20px;
 
@@ -44,4 +46,16 @@
 
 .add-form__button:active {
   opacity: 0.5;
+}
+
+.header__button-close {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+
+  cursor: pointer;
+}
+
+.header__button-close:hover {
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
