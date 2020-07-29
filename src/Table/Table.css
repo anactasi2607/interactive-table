@@ -8,33 +8,30 @@
   border-radius: 5px;
 }
 
-.table-th {
+.table__th {
   padding: 20px;
 
   text-align: left;
 }
 
-.table-thead .table-th {
+.table__thead .table__th {
   cursor: pointer;
 }
 
-.table-td {
+.table__td {
   padding: 10px 20px;
 }
 
-.table-tbody .table-tr:nth-child(odd) {
+.table__tbody .table__tr:nth-child(odd) {
   background-color: rgba(220, 232, 231, 0.4);
 }
 
-.table-tbody .table-tr {
+.table__tbody .table__tr {
   cursor: pointer;
 }
 
-.table-tbody .table-tr:hover {
-  z-index: 2;
-
-  background-color: rgba(255, 212, 212, 0.5);
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+.table__tbody .table__tr:hover {
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
 
 .asc,
@@ -56,7 +53,7 @@
 
 .asc::after {
   border-right: 6px solid transparent;
-  border-bottom: 10px solid rgba(250, 116, 116, 0.8);
+  border-bottom: 10px solid rgba(183, 224, 237, 0.9);
   border-left: 6px solid transparent;
 }
 

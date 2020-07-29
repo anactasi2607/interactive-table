@@ -30,6 +30,12 @@
   position: absolute;
   top: 5px;
   right: 5px;
+
+  cursor: pointer;
+}
+
+.info__button:hover {
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
 
 .info__title {

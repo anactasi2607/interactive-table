@@ -1,0 +1,31 @@
+.search {
+  width: 90%;
+}
+
+.search__input {
+  width: 80%;
+  padding: 10px;
+}
+
+.search__button {
+  width: 100px;
+  padding: 10px;
+
+  background-color: rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+.search__input,
+.search__button {
+  border: 1px solid grey;
+  border-radius: 5px;
+}
+
+.search__button:hover,
+.search__input:hover {
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.search__button:active {
+  opacity: 0.5;
+}

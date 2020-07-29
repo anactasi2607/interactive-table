@@ -5,14 +5,16 @@ class Form extends Component {
   render() {
     const { submitHandler, onChangeInput, newUser, disabled } = this.props;
     return (
-      <form className="add-form" onSubmit={submitHandler}>
-        <h2 className="add-form-title">
+      <form className="header__add-form add-form" onSubmit={submitHandler}>
+        <h2 className="add-form__title">
           Добавить нового пользователя в таблицу:
         </h2>
-        <div className="add-form-row">
-          <label htmlFor="user-id">id:</label>
+        <div className="add-form__row">
+          <label className="add-form__label" htmlFor="user-id">
+            id:
+          </label>
           <input
-            className="add-form-input"
+            className="add-form__input"
             id="id"
             type="number"
             name="user-id"
@@ -23,10 +25,12 @@ class Form extends Component {
           ></input>
         </div>
 
-        <div className="add-form-row">
-          <label htmlFor="firstName">firstName:</label>
+        <div className="add-form__row">
+          <label className="add-form__label" htmlFor="firstName">
+            firstName:
+          </label>
           <input
-            className="add-form-input"
+            className="add-form__input"
             id="firstName"
             type="text"
             name="firstName"
@@ -37,10 +41,12 @@ class Form extends Component {
           ></input>
         </div>
 
-        <div className="add-form-row">
-          <label htmlFor="lastName">lastName:</label>
+        <div className="add-form__row">
+          <label className="add-form__label" htmlFor="lastName">
+            lastName:
+          </label>
           <input
-            className="add-form-input"
+            className="add-form__input"
             id="lastName"
             type="text"
             name="lastName"
@@ -51,10 +57,12 @@ class Form extends Component {
           ></input>
         </div>
 
-        <div className="add-form-row">
-          <label htmlFor="email">email:</label>
+        <div className="add-form__row">
+          <label className="add-form__label" htmlFor="email">
+            email:
+          </label>
           <input
-            className="add-form-input"
+            className="add-form__input"
             id="email"
             type="email"
             name="email"
@@ -65,10 +73,12 @@ class Form extends Component {
           ></input>
         </div>
 
-        <div className="add-form-row">
-          <label htmlFor="phone">phone:</label>
+        <div className="add-form__row">
+          <label className="add-form__label" htmlFor="phone">
+            phone:
+          </label>
           <input
-            className="add-form-input"
+            className="add-form__input"
             id="phone"
             type="number"
             name="phone"
@@ -78,7 +88,7 @@ class Form extends Component {
             required
           ></input>
         </div>
-        <button className="add-form-button" disabled={disabled}>
+        <button className="add-form__button" disabled={disabled}>
           Добавить в таблицу
         </button>
       </form>

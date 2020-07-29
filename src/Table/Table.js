@@ -3,11 +3,11 @@ import "./Table.css";
 
 function Table(props) {
   return (
-    <table className="table">
-      <thead className="table-thead">
-        <tr className="table-tr">
+    <table className="main__table table">
+      <thead className="table__thead">
+        <tr className="table__tr">
           <th
-            className="table-th"
+            className="table__th"
             onClick={props.onSort.bind(null, "id")}
             title="Нажмите для сортировки"
           >
@@ -17,7 +17,7 @@ function Table(props) {
             ) : null}
           </th>
           <th
-            className="table-th"
+            className="table__th"
             onClick={props.onSort.bind(null, "firstName")}
             title="Нажмите для сортировки"
           >
@@ -27,7 +27,7 @@ function Table(props) {
             ) : null}
           </th>
           <th
-            className="table-th"
+            className="table__th"
             onClick={props.onSort.bind(null, "lastName")}
             title="Нажмите для сортировки"
           >
@@ -37,7 +37,7 @@ function Table(props) {
             ) : null}
           </th>
           <th
-            className="table-th"
+            className="table__th"
             onClick={props.onSort.bind(null, "email")}
             title="Нажмите для сортировки"
           >
@@ -47,7 +47,7 @@ function Table(props) {
             ) : null}
           </th>
           <th
-            className="table-th"
+            className="table__th"
             onClick={props.onSort.bind(null, "phone")}
             title="Нажмите для сортировки"
           >
@@ -58,19 +58,19 @@ function Table(props) {
           </th>
         </tr>
       </thead>
-      <tbody className="table-tbody">
+      <tbody className="table__tbody">
         {props.data.map((item) => (
           <tr
-            className="table-tr"
+            className="table__tr"
             key={item.id + item.phone}
             onClick={props.onClickRow.bind(null, item)}
             title="Нажмите для получения подробной информации"
           >
-            <td className="table-td">{item.id}</td>
-            <td className="table-td">{item.firstName}</td>
-            <td className="table-td">{item.lastName}</td>
-            <td className="table-td">{item.email}</td>
-            <td className="table-td">{item.phone}</td>
+            <td className="table__td">{item.id}</td>
+            <td className="table__td">{item.firstName}</td>
+            <td className="table__td">{item.lastName}</td>
+            <td className="table__td">{item.email}</td>
+            <td className="table__td">{item.phone}</td>
           </tr>
         ))}
       </tbody>

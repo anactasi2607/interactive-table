@@ -41,6 +41,18 @@ class App extends Component {
     });
   }
 
+  // validateForm = () => {
+  //   let isFormValid = true;
+
+  //   Object.keys(this.state.newUser).forEach((name) => {
+  //     isFormValid = !!this.state.newUser[name] && isFormValid;
+  //     console.log(!!this.state.newUser[name]);
+  //   });
+  //   this.setState({
+  //     isFormValid: isFormValid,
+  //   });
+  // };
+
   onChangeInput = (evt) => {
     this.setState({
       newUser: {
@@ -53,6 +65,7 @@ class App extends Component {
   submitHandler = (evt) => {
     evt.preventDefault();
     const { newUser, data } = this.state;
+    console.log(this.state.newUser);
 
     this.setState({
       data: [newUser, ...data],
@@ -139,66 +152,72 @@ class App extends Component {
     }
 
     return (
-      <div className="container">
+      <React.Fragment>
         {this.state.isLoading ? (
           <Loader />
         ) : (
           <React.Fragment>
-            <div className="header">
-              <TableSearch onSearch={this.searchHandler} />
-              <button onClick={this.onClick}>Добавить</button>
-            </div>
+            <header className="header container">
+              <h1 className="header__title">Интерактивная таблица</h1>
+              <div className="header__content">
+                <TableSearch onSearch={this.searchHandler} />
+                <button className="header__addButton" onClick={this.onClick}>
+                  Добавить
+                </button>
+              </div>
+              {this.state.displayForm ? (
+                <Form
+                  submitHandler={this.submitHandler}
+                  onChangeInput={this.onChangeInput}
+                  newUser={this.state.newUser}
+                  disabled={!this.state.isFormValid}
+                />
+              ) : null}
+            </header>
 
-            {this.state.displayForm ? (
-              <Form
-                submitHandler={this.submitHandler}
-                onChangeInput={this.onChangeInput}
-                newUser={this.state.newUser}
-                disabled={this.state.isFormValid}
+            <main className="main container">
+              <Table
+                data={displayData}
+                onClickRow={this.onClickRow}
+                onSort={this.onSort}
+                sort={this.state.sort}
+                sortField={this.state.sortField}
               />
-            ) : null}
 
-            <Table
-              data={displayData}
-              onClickRow={this.onClickRow}
-              onSort={this.onSort}
-              sort={this.state.sort}
-              sortField={this.state.sortField}
-            />
+              {this.state.data.length > pageSize ? (
+                <ReactPaginate
+                  previousLabel={"<"}
+                  nextLabel={">"}
+                  breakLabel={"..."}
+                  breakClassName={"pagination__item--break"}
+                  breakLinkClassName={"pagination__link--break"}
+                  pageCount={pageCount}
+                  marginPagesDisplayed={2}
+                  pageRangeDisplayed={5}
+                  onPageChange={this.pageChangeHandler}
+                  containerClassName={"main__pagination pagination"}
+                  activeClassName={"pagination__item--active"}
+                  disabledClassName={"pagination__item--disabled"}
+                  pageClassName="pagination__item"
+                  pageLinkClassName="pagination__link"
+                  previousClassName="pagination__item"
+                  nextClassName="pagination__item"
+                  previousLinkClassName="pagination__link"
+                  nextLinkClassName="pagination__link"
+                  forcePage={this.state.currentPage}
+                />
+              ) : null}
 
-            {this.state.data.length > pageSize ? (
-              <ReactPaginate
-                previousLabel={"<"}
-                nextLabel={">"}
-                breakLabel={"..."}
-                breakClassName={"pagination__item--break"}
-                breakLinkClassName={"pagination__link--break"}
-                pageCount={pageCount}
-                marginPagesDisplayed={2}
-                pageRangeDisplayed={5}
-                onPageChange={this.pageChangeHandler}
-                containerClassName={"pagination"}
-                activeClassName={"pagination__item--active"}
-                disabledClassName={"pagination__item--disabled"}
-                pageClassName="pagination__item"
-                pageLinkClassName="pagination__link"
-                previousClassName="pagination__item"
-                nextClassName="pagination__item"
-                previousLinkClassName="pagination__link"
-                nextLinkClassName="pagination__link"
-                forcePage={this.state.currentPage}
-              />
-            ) : null}
-
-            {this.state.selectedRow ? (
-              <DetailInfo
-                user={this.state.selectedRow}
-                onClickClose={this.onClickClose}
-              />
-            ) : null}
+              {this.state.selectedRow ? (
+                <DetailInfo
+                  user={this.state.selectedRow}
+                  onClickClose={this.onClickClose}
+                />
+              ) : null}
+            </main>
           </React.Fragment>
         )}
-      </div>
+      </React.Fragment>
     );
   }
 }

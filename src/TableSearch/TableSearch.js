@@ -8,7 +8,7 @@ function TableSearch(props) {
   };
 
   return (
-    <div className="search">
+    <div className="header__search search">
       <input
         type="text"
         className="search__input"

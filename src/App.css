@@ -2,9 +2,36 @@
   box-sizing: border-box;
   width: 100%;
   margin: auto;
-  padding: 20px;
+  padding: 10px 20px;
 }
 
-.header {
+.header__title {
+  margin: 0;
+  margin-bottom: 20px;
+
+  text-align: center;
+
+  user-select: none;
+}
+
+.header__content {
   display: flex;
+  justify-content: space-between;
+}
+
+.header__addButton {
+  width: 100px;
+
+  background-color: rgb(183, 224, 237);
+  border: 1px solid grey;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.header__addButton:hover {
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.header__addButton:active {
+  opacity: 0.5;
 }

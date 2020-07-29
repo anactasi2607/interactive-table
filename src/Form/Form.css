@@ -1,29 +1,47 @@
 .add-form {
-  width: 35%;
-  margin-bottom: 20px;
+  width: 80%;
+  margin-top: 20px;
   padding: 20px;
 
   border: 1px solid grey;
   border-radius: 5px;
 }
 
-.add-form-title {
+.add-form__title {
   margin: 0;
+  margin-bottom: 20px;
 }
 
-.add-form-input {
+.add-form__input {
   width: 70%;
   padding: 5px;
 }
 
-.add-form-row {
+.add-form__row {
   display: flex;
   justify-content: space-between;
   margin-bottom: 5px;
 }
 
-.add-form-button {
+.add-form__row:nth-last-child(2) {
+  margin-bottom: 20px;
+}
+
+.add-form__button {
   display: block;
   margin-right: auto;
   margin-left: auto;
+  padding: 10px;
+
+  background-color: rgba(0, 0, 0, 0.1);
+  border: 1px solid grey;
+  border-radius: 5px;
+}
+
+.add-form__button:hover {
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.add-form__button:active {
+  opacity: 0.5;
 }

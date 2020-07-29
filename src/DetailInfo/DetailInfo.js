@@ -3,7 +3,7 @@ import "./DetailInfo.css";
 
 function DetailInfo({ user, onClickClose }) {
   return (
-    <div className="info">
+    <div className="main__info info">
       <h3 className="info__title">Подробная информация</h3>
       <button className="info__button" onClick={onClickClose} title="Закрыть">
         X
